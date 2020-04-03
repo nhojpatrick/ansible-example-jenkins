@@ -7,8 +7,15 @@ Commands all assume your using a Mac, so for Linux or Windows you might need to 
 - virtualbox
 - vagrantup
 
-## Setting Started
+## Getting Started
 
 ```bash
 vagrant up
 ```
+
+```bash
+vagrant ssh
+```
+
+## Jenkis homes page 
+http://localhost:8181/
