@@ -4,6 +4,7 @@ jenkins_hostname: localhost
 
 java_packages:
   - java-1.8.0-openjdk-devel
+  - java-11-openjdk-devel
 #jenkins_java_options: "-Djenkins.install.runSetupWizard=false -Dorg.apache.commons.jelly.tags.fmt.timeZone=Europe/London"
 
 jenkins_plugins:
