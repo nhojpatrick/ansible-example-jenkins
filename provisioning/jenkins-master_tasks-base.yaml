@@ -1,0 +1,9 @@
+---
+
+- name: Install Java
+  include_role:
+    name: geerlingguy.java
+
+- name: Install Jenkins
+  include_role:
+    name: geerlingguy.jenkins

@@ -1,0 +1,13 @@
+---
+
+- name: Static TCP Port - Script
+  ansible.builtin.set_fact:
+    setSlaveAgentPort: |
+        Jenkins.instance.setSlaveAgentPort(51515)
+
+- name: Static TCP Port - fixing vagrant port forwarding
+  community.general.jenkins_script:
+    script: "{{ setSlaveAgentPort }}"
+    url: "http://localhost:8080"
+    user: "{{ jenkins_admin_username }}"
+    password: "{{ jenkins_admin_password }}"

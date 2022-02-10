@@ -6,5 +6,11 @@
 
   tasks:
 
-  - name: Jenkins Master Installation Tasks
-    include_tasks: jenkins-master_tasks.yaml
+  - name: Jenkins Master Installation Tasks - Base
+    include_tasks: jenkins-master_tasks-base.yaml
+
+  - name: Jenkins Master Installation Tasks - Extra
+    include_tasks: jenkins-master_tasks-extra.yaml
+
+  - name: Jenkins Master Installation Tasks - Projects
+    include_tasks: jenkins-master_tasks-projects.yaml
