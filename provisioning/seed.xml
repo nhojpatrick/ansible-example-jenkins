@@ -1,0 +1,44 @@
+<project>
+	<properties>
+		<org.jenkinsci.plugins.gogs.GogsProjectProperty plugin="gogs-webhook@1.0.15">
+			<gogsSecret>{AQAAABAAAAAQzNwZRtG6Ddg8c7wALUyK7ZMCjKjm4nlhDutZPzp9eMc=}</gogsSecret>
+		</org.jenkinsci.plugins.gogs.GogsProjectProperty>
+		<hudson.model.ParametersDefinitionProperty>
+			<parameterDefinitions>
+				<hudson.model.BooleanParameterDefinition><name>CREATE_BRANCHES_JOB</name><defaultValue>true</defaultValue></hudson.model.BooleanParameterDefinition>
+				<hudson.model.BooleanParameterDefinition><name>CREATE_DEVELOP_JOB</name><defaultValue>true</defaultValue></hudson.model.BooleanParameterDefinition>
+				<hudson.model.BooleanParameterDefinition><name>CREATE_RELEASE_JOB</name><defaultValue>true</defaultValue></hudson.model.BooleanParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>GIT_CONFIG_USER_EMAIL</name><defaultValue>jenkins@example.tld</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>GIT_CONFIG_USER_NAME</name><defaultValue>Jenkins</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>FOLDER_ID</name><defaultValue>cicd</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>GIT_URL_PULL_TEMPLATE</name><defaultValue>http://192.168.0.50:3000/cicd/%s.git</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>GIT_URL_PUSH_TEMPLATE</name><defaultValue>http://%s@192.168.0.50:3000/cicd/%s.git</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>GIT_CREDENTIALS_ID</name><defaultValue>cicd-jenkins-token</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+				<hudson.model.StringParameterDefinition><name>PROJECTS_NAME</name><defaultValue>parent</defaultValue><trim>true</trim></hudson.model.StringParameterDefinition>
+			</parameterDefinitions>
+		</hudson.model.ParametersDefinitionProperty>
+	</properties>
+	<scm class="hudson.plugins.git.GitSCM" plugin="git@4.10.1">
+		<configVersion>2</configVersion>
+		<userRemoteConfigs>
+			<hudson.plugins.git.UserRemoteConfig>
+				<url>http://192.168.0.50:3000/cicd/jenkins-scripts.git</url>
+				<credentialsId>cicd-jenkins-token</credentialsId>
+			</hudson.plugins.git.UserRemoteConfig>
+		</userRemoteConfigs>
+		<branches>
+			<hudson.plugins.git.BranchSpec>
+				<name>*/main</name>
+			</hudson.plugins.git.BranchSpec>
+		</branches>
+		<doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+		<submoduleCfg class="empty-list"/>
+		<extensions/>
+	</scm>
+	<assignedNode>default</assignedNode>
+	<builders>
+		<javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.78.3">
+			<targets>./seed_projects.groovy</targets>
+		</javaposse.jobdsl.plugin.ExecuteDslScripts>
+	</builders>
+</project>

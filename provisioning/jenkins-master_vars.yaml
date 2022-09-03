@@ -45,5 +45,5 @@ jenkins_plugins:
 jenkins_admin_username: admin
 jenkins_admin_password: admin
 
-jenkins_version: "2.346.3"
+jenkins_version: "2.361.1"
 jenkins_prefer_lts: true
