@@ -6,5 +6,6 @@ git checkout v2.303.x && git rebase v2.289.x && git push -f && \
 git checkout v2.319.x && git rebase v2.303.x && git push -f && \
 git checkout v2.332.x && git rebase v2.319.x && git push -f && \
 git checkout v2.346.x && git rebase v2.332.x && git push -f && \
-git checkout v2.x     && git rebase v2.346.x && git push -f && \
-git checkout v2.346.x ;
+git checkout v2.361.x && git rebase v2.346.x && git push -f && \
+git checkout v2.x     && git rebase v2.361.x && git push -f && \
+git checkout v2.361.x ;
